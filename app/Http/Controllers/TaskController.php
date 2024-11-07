@@ -31,6 +31,12 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'due_date' => 'nullable|date',
+            'is_completed' => 'required|boolean',
+        ]);
         $task = Task::create($request->all());
         return response()->json($task);
     }
@@ -59,6 +65,12 @@ class TaskController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'due_date' => 'nullable|date',
+            'is_completed' => 'required|boolean',
+        ]);
         $task = Task::find($id);
         $task->update($request->all());
         return response()->json($task);
