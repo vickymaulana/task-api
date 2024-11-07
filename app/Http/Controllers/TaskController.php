@@ -34,7 +34,6 @@ class TaskController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'due_date' => 'nullable|date',
             'is_completed' => 'required|boolean',
         ]);
         $task = Task::create($request->all());
@@ -68,7 +67,6 @@ class TaskController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'due_date' => 'nullable|date',
             'is_completed' => 'required|boolean',
         ]);
         $task = Task::find($id);
