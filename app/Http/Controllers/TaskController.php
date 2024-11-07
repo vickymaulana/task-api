@@ -31,6 +31,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        $task = Task::create($request->all());
+        return response()->json($task);
     }
 
     /**
@@ -39,6 +41,8 @@ class TaskController extends Controller
     public function show(string $id)
     {
         //
+        $task = Task::find($id);
+        return response()->json($task);
     }
 
     /**
@@ -55,6 +59,9 @@ class TaskController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $task = Task::find($id);
+        $task->update($request->all());
+        return response()->json($task);
     }
 
     /**
@@ -63,5 +70,8 @@ class TaskController extends Controller
     public function destroy(string $id)
     {
         //
+        $task = Task::find($id);
+        $task->delete();
+        return response()->json(['message' => 'Task di hapus!']);
     }
 }
