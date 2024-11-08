@@ -84,4 +84,9 @@ class TaskController extends Controller
         $task->delete();
         return response()->json(['message' => 'Task di hapus!']);
     }
+
+    function showdata(){
+        $tasks = Task::all();
+        return view('task.index', ['tasks' => $tasks]);
+    }
 }
